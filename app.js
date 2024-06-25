@@ -15,8 +15,24 @@ function getList() {
   });
 }
 
+const error = document.querySelector("#error");
+const list = document.querySelector("#list");
 // TODO: Handle the resolved or rejected states of the promise
 
+getList()
+.then((hobbits) =>{
+  for(let i = 0; i <hobbits.length; i++){
+    const li = document.createElement("li");
+    li.textContent = hobbits[i];
+    list.append(li);
+  }
+  console.log(hobbits);
+})
+
+.catch((fail) =>{
+  console.error(fail);
+  error.textContent = fail.message;
+})
 // TODO: If the promise resolves with the list of hobbits
 // Render the list of hobbits as list items within the unordered list with id="list" (check the index.html file)
 
